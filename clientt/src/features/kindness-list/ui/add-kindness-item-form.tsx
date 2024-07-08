@@ -1,39 +1,22 @@
-import { AddBlockItemDtoType } from "@/shared/api/generated";
 import { UiButton } from "@/shared/ui/CustomButton";
-import { UiSelectField } from "@/shared/ui/select-field";
 import { UiTextField } from "@/shared/ui/text-field";
 import { useAddKindnessItemForm } from "../model/use-add-kindness-item-form";
 
-
-
-const typeOptions = [
-  { label: "qwe", value: AddBlockItemDtoType.Website },
-  { label: "asd", value: AddBlockItemDtoType.KeyWord },
-];
-
 export function AddKindnessItemForm() {
-  const { handleSubmit,  register, type } = useAddKindnessItemForm();
+  const { handleSubmit, register, errors } = useAddKindnessItemForm();
 
   return (
-    <form onSubmit={handleSubmit}>
-      <UiSelectField
-        options={typeOptions}
-        selectProps={{
-          ...register("type"),
-        }}
-      />
+    <form className="add-kindness-item-form" onSubmit={handleSubmit}>
       <UiTextField
         inputProps={{
-          placeholder:
-            type === AddBlockItemDtoType.KeyWord
-              ? "Enter Key Word..."
-              : "Enter WebSite...",
-          ...register("data"),
+          placeholder: "title",
+          ...register("data", { required: "This field is required" }),
         }}
       />
-      <UiButton variant="primary">
-        Add Kindness
-      </UiButton>
+      {errors.data && (
+        <span className="error-message">{errors.data.message}</span>
+      )}
+      <UiButton variant="primary">Add Kindness</UiButton>
     </form>
   );
 }

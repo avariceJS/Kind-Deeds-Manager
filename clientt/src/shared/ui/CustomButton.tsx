@@ -6,5 +6,5 @@ export type UiButtonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export function UiButton({ variant, ...props }: UiButtonProps) {
-  return <button {...props} />;
+  return <button className={`ui-button ${variant}`} {...props} />;
 }

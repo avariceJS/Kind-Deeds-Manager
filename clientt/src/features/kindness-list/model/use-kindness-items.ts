@@ -1,4 +1,4 @@
-import { useKindnessListQuery } from "@/entities/block-list/queries";
+import { useKindnessListQuery } from "@/entities/kindness-list/queries";
 import { useDebauncedValue } from "@/shared/lib/react-std";
 import { useState } from "react";
 

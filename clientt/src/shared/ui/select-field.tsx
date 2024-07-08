@@ -1,4 +1,4 @@
-import { PropsWithRef, SelectHTMLAttributes, useId } from "react";
+import { PropsWithRef, SelectHTMLAttributes, useId } from "react"
 
 export type UiSelectOption = {
   value: string;
@@ -13,7 +13,6 @@ export type UiSelectFieldProps = {
 };
 
 export function UiSelectField({
-
   error,
   label,
   selectProps: inputProps,
@@ -22,11 +21,7 @@ export function UiSelectField({
   const id = useId();
   return (
     <div>
-      {label && (
-        <label htmlFor={id}>
-          {label}
-        </label>
-      )}
+      {label && <label htmlFor={id}>{label}</label>}
       <select {...inputProps} id={id}>
         {options?.map((option, i) => (
           <option key={i} value={option.value}>

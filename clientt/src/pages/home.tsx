@@ -1,8 +1,9 @@
-import { SignOutButton } from "@/features/auth";
-import { AddKindnessItemForm, KindnessList } from '@/features/kindness-list'
-
+import { AddKindnessItemForm, KindnessList } from "@/features/kindness-list";
 
 import { RootState } from "@/shared/store";
+import { UiHeader } from "@/shared/ui/header";
+import { UiSpinner } from "@/shared/ui/spinner";
+import { Profile } from "@/widgets/profile";
 import { Inter } from "next/font/google";
 import { useSelector } from "react-redux";
 
@@ -11,10 +12,10 @@ const inter = Inter({ subsets: ["latin"] });
 export default function HomePage() {
   const session = useSelector((state: RootState) => state.session);
 
-  const { data, status } = session;
+  const { status } = session;
 
   if (status === "loading") {
-    return <main>Loading...</main>;
+    return <UiSpinner />;
   }
 
   if (status === "failed") {
@@ -23,12 +24,15 @@ export default function HomePage() {
 
   return (
     <>
-      <main>
-        {data?.email}
-        <SignOutButton />
-        <AddKindnessItemForm></AddKindnessItemForm>
-        <KindnessList></KindnessList>
-      </main>
+      <div>
+        <UiHeader right={<Profile />} />
+        <div>
+          <main>
+            <AddKindnessItemForm />
+            <KindnessList />
+          </main>
+        </div>
+      </div>
     </>
   );
 }

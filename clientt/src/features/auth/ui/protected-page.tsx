@@ -1,7 +1,8 @@
-import { ROUTES } from '@/shared/constants/routes'
-import { fetchSession } from '@/shared/slice/sessionSlice'
-import { AppDispatch, RootState } from '@/shared/store'
-import { useRouter } from 'next/router'
+import { ROUTES } from "@/shared/constants/routes";
+import { fetchSession } from "@/shared/slice/sessionSlice";
+import { AppDispatch, RootState } from "@/shared/store";
+import { UiSpinner } from "@/shared/ui/spinner";
+import { useRouter } from "next/router";
 import { PropsWithChildren, ReactElement, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -23,8 +24,8 @@ export function protectedPage<P>(Component: (props: P) => ReactElement) {
       router.replace(ROUTES.SIGN_IN);
     }
 
-    if (status === 'loading') {
-      return <h1>Loading...</h1>;
+    if (status === "loading") {
+      return <UiSpinner />;
     }
 
     return <Component {...props} />;

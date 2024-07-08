@@ -1,8 +1,7 @@
-import { ROUTES } from '@/shared/constants/routes'
+import { ROUTES } from "@/shared/constants/routes";
 import { signOut } from "@/shared/slice/sessionSlice";
 import { AppDispatch, RootState } from "@/shared/store";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export function useSignOut() {
@@ -17,6 +16,6 @@ export function useSignOut() {
 
   return {
     handleSignOut,
-    session
+    session,
   };
 }

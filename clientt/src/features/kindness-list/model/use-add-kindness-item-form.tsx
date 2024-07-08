@@ -6,7 +6,13 @@ import { useDispatch } from "react-redux";
 
 export function useAddKindnessItemForm() {
   const dispatch = useDispatch<AppDispatch>();
-  const { handleSubmit, register, watch, reset } = useForm<{
+  const {
+    handleSubmit,
+    register,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm<{
     type: AddBlockItemDtoType;
     data: string;
   }>({
@@ -21,6 +27,9 @@ export function useAddKindnessItemForm() {
     type: AddBlockItemDtoType;
     data: string;
   }) => {
+    if (!data.data.trim()) {
+      return;
+    }
     await dispatch(addBlockItem(data));
     dispatch(fetchBlockList());
     reset();
@@ -29,6 +38,7 @@ export function useAddKindnessItemForm() {
   return {
     handleSubmit: handleSubmit(onSubmit),
     register,
+    errors,
     type,
   };
 }

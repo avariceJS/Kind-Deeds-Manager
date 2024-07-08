@@ -1,5 +1,6 @@
 import { UiButton } from "@/shared/ui/CustomButton";
 import { useSignOut } from "../model/use-sign-out";
+import { UiSpinner } from '@/shared/ui/spinner'
 
 export function SignOutButton() {
   const { handleSignOut, session } = useSignOut();
@@ -7,10 +8,10 @@ export function SignOutButton() {
   const { status } = session;
 
   if (status === "loading") {
-    return <main>Loading...</main>;
+    return UiSpinner;
   }
   return (
-    <UiButton variant="outlined" onClick={handleSignOut}>
+    <UiButton variant="primary" onClick={handleSignOut}>
       Sign Out
     </UiButton>
   );

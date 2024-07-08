@@ -16,12 +16,11 @@ export function useSignInForm() {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
   const session = useSelector((state: RootState) => state.session);
-
+  console.log(session.error);
 
   const onSubmit = (data: { email: string; password: string }) => {
     dispatch(signIn(data));
   };
-
 
   useEffect(() => {
     if (session.status === "failed") {

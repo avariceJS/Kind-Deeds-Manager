@@ -14,14 +14,12 @@ export function useSignUpForm() {
   }>();
 
   const dispatch = useDispatch<AppDispatch>();
-  const router = useRouter()
+  const router = useRouter();
   const session = useSelector((state: RootState) => state.session);
-
 
   const onSubmit = (data: { email: string; password: string }) => {
     dispatch(signUp(data));
   };
-
 
   useEffect(() => {
     if (session.status === "failed") {

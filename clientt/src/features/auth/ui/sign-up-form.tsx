@@ -7,23 +7,30 @@ import { useSignUpForm } from "../model/use-sign-up-form";
 export function SignUpForm() {
   const { handleSubmit, register, onSubmit, errorMessage } = useSignUpForm();
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <UiTextField
-        label="Email"
-        inputProps={{ type: "email", ...register("email", { required: true }) }}
-      />
-      <UiTextField
-        label="Password"
-        inputProps={{
-          type: "password",
-          ...register("password", { required: true }),
-        }}
-      />
-      <UiButton variant="primary" type="submit">
-        Sign Up
-      </UiButton>
-      <UiLink href={ROUTES.SIGN_IN}>sign in</UiLink>
-      {errorMessage && <div>{errorMessage}</div>}
-    </form>
+    <div className="sign-in-form-container">
+      <form className="sign-in-form" onSubmit={handleSubmit(onSubmit)}>
+        <UiTextField
+          label="Email"
+          inputProps={{
+            type: "email",
+            ...register("email", { required: true }),
+          }}
+        />
+        <UiTextField
+          label="Password"
+          inputProps={{
+            type: "password",
+            ...register("password", { required: true }),
+          }}
+        />
+
+        <UiButton className="submit-button" variant="outlined" type="submit">
+          Sign Up
+        </UiButton>
+
+        <UiLink href={ROUTES.SIGN_IN}>sign in</UiLink>
+        {errorMessage && <div>{errorMessage}</div>}
+      </form>
+    </div>
   );
 }

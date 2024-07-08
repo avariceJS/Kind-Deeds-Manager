@@ -1,4 +1,3 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   authControllerGetSessionInfo,
   authControllerSignIn,
@@ -6,6 +5,7 @@ import {
   authControllerSignUp,
   GetSessionInfoDto,
 } from "@/shared/api/generated";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchSession = createAsyncThunk(
   "session/fetchSession",
@@ -37,7 +37,7 @@ export const signUp = createAsyncThunk(
 );
 
 const initialState = {
-  data: null as GetSessionInfoDto | null, // Allow data to be either GetSessionInfoDto or null
+  data: null as GetSessionInfoDto | null,
   status: "idle",
   error: null as string | null,
 };
@@ -57,7 +57,7 @@ const sessionSlice = createSlice({
       .addCase(fetchSession.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchSession.fulfilled, (state, action) => { 
+      .addCase(fetchSession.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.data = action.payload;
       })

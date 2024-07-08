@@ -6,18 +6,18 @@ export function KindnessList() {
   const { items, q, setQ, IsLoading } = useKindnessItems();
 
   const isLoader = !IsLoading;
-
   const isEmptyText = !IsLoading && items.length === 0;
   const isItems = items.length > 0;
 
   return (
-    <div>
-      <div>
-        {isLoader && <UiSpinner />}
-        {isEmptyText && <div>List is empty...</div>}
-        {isItems &&
-          items.map((item, index) => <KindnessItem key={index} {...item} />)}
-      </div>
+    <div className="kindness-list">
+      {isLoader && <UiSpinner />}
+      {isEmptyText && <div>List is empty...</div>}
+      {isItems ? (
+        items.map((item, index) => <KindnessItem key={index} {...item} />)
+      ) : (
+        <h1>List is empty...</h1>
+      )}
     </div>
   );
 }

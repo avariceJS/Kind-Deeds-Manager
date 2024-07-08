@@ -1,9 +1,13 @@
-import { Action, configureStore, ThunkAction, Tuple } from "@reduxjs/toolkit";
+import {
+  Action,
+  configureStore,
+  createDynamicMiddleware,
+  ThunkAction,
+} from "@reduxjs/toolkit";
+import { thunk } from "redux-thunk";
 import accountReducer from "../slice/accountSlice";
 import blockListReducer from "../slice/kindnessListSlice";
 import sessionReducer from "../slice/sessionSlice";
-import { thunk } from "redux-thunk";
-import { createDynamicMiddleware } from "@reduxjs/toolkit";
 
 const dynamicMiddleware = createDynamicMiddleware();
 

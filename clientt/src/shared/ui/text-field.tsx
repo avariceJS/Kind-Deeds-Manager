@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, PropsWithRef, useId } from "react";
+import { InputHTMLAttributes, PropsWithRef, useId } from "react"
 
 export type UiTextFieldProps = {
   label?: string;
@@ -6,25 +6,13 @@ export type UiTextFieldProps = {
   inputProps?: PropsWithRef<InputHTMLAttributes<HTMLInputElement>>;
 };
 
-export function UiTextField({
-  error,
-  label,
-  inputProps,
-}: UiTextFieldProps) {
+export function UiTextField({ error, label, inputProps }: UiTextFieldProps) {
   const id = useId();
   return (
-    <div>
-      {label && (
-        <label htmlFor={id}>
-          {label}
-        </label>
-      )}
-      <input
-        {...inputProps}
-        id={id}
-         
-      />
-      {error && <div>{error}</div>}
+    <div className="ui-text-field">
+      {label && <label htmlFor={id}>{label}</label>}
+      <input {...inputProps} id={id} />
+      {error && <div className="error">{error}</div>}
     </div>
   );
 }

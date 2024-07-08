@@ -1,12 +1,5 @@
-
-import { UiLogo } from "./logo";
 import { ReactNode } from "react";
 
-export function UiHeader() {
-  return (
-    <header
-    >
-      <UiLogo />
-    </header>
-  );
+export function UiHeader({ right }: { className?: string; right?: ReactNode }) {
+  return <header>{right}</header>;
 }

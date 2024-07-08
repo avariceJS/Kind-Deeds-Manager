@@ -32,7 +32,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "src/shared/store/index.tsx", "src/shared/slice/accountSlice.ts"  ],
+, "src/shared/store/index.tsx", "src/shared/slice/accountSlice.ts", "orval.config.js"  ],
   "exclude": [
     "node_modules"
   ]

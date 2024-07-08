@@ -1,10 +1,10 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   accountControllerGetAccount,
+  accountControllerPatchAccount,
   AccountDto,
   PatchAccountDto,
-  accountControllerPatchAccount,
 } from "@/shared/api/generated";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 interface AccountState {
   account: AccountDto | null;
